@@ -1,6 +1,6 @@
 import random
 
-from MoviesDB.db import movie_storage
+from MoviesDB.db import movie_storage_json
 from MoviesDB.db.movie_dto import MovieDto
 from MoviesDB.omdb.omdb_api_client import OMDBAPIClient
 from MoviesDB.youtube.youtube_api_client import YoutubeAPIClient
@@ -10,7 +10,7 @@ import web_generator
 class MovieAppClient:
     """class to run the movie app"""
     def __init__(self):
-        self._movie_db = movie_storage.MovieDB()
+        self._movie_db = movie_storage_json.MovieDBJson()
         self._omdb_api_client = OMDBAPIClient()
         self._youtube_api_client = YoutubeAPIClient()
         self._website_generator = web_generator.WebGenerator()
@@ -99,7 +99,7 @@ class MovieAppClient:
 
     def _update_movie(self):
         """Ask movie name from user and add user's description if movie exists"""
-        name = input("Enter movie name: ")
+        name = input("Enter movie name: ").capitalize()
         movie = self._movie_db.get_movie(name)
         if movie:
             movie.note = input("Enter movie notes: ")

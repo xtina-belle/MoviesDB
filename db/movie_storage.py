@@ -1,24 +1,21 @@
 import statistics
-import json
 import typing
+from abc import ABC, abstractmethod
 
 from MoviesDB.db.movie_dto import MovieDto
 
-DB_FILE = "db/moviesDB.json"
 
-
-class MovieDB:
+class MovieDB(ABC):
     """
     A class representing a database.
     """
     def __init__(self):
         self._title_to_movie_dto = {}
 
+    @abstractmethod
     def setup(self):
         """Loading the DB data to memory"""
-        with open(DB_FILE, "r", encoding="utf-8") as file:
-            for title, movie_data in json.load(file).items():
-                self._title_to_movie_dto[title] = MovieDto.get_instance(title, movie_data)
+        pass
 
     def delete(self, name):
         """Deletes a movie from the movie's database by name if exists"""
@@ -82,14 +79,10 @@ class MovieDB:
         """calculates a median rating of all movies"""
         return statistics.median(self.get_list_of_rates())
 
+    @abstractmethod
     def _flush_data(self):
-        """Flush self._title_to_movie_dto to the json file"""
-        with open(DB_FILE, "w", encoding="utf-8") as file:
-            data = {
-                title: movie_dto.to_dict()
-                for title, movie_dto in self._title_to_movie_dto.items()
-            }
-            json.dump(data, file, indent=4)
+        """Flush self._title_to_movie_dto to the *type* file"""
+        pass
 
     def __str__(self):
         films = "\n".join([str(movie_dto) for movie_dto in self._title_to_movie_dto.values()])

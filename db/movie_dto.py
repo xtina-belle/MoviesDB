@@ -36,5 +36,8 @@ class MovieDto:
             data["note"] = self.note
         return data
 
+    def __iter__(self):
+        return iter([self.name, self.rating, self.year, self.poster, self.trailer_id, self.note])
+
     def __str__(self):
         return f"{self.name} ({self.year}): {self.rating}"

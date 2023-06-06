@@ -65,5 +65,12 @@
         "poster": "https://m.media-amazon.com/images/M/MV5BNzRiOWZmMzUtZTJiOC00MjQ1LTkwMjgtNzhlYzBmODAzYTA0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg",
         "trailer_id": "uR-2TiQVY-k",
         "note": "Work hard!"
+    },
+    "Vikings": {
+        "rate": 8.5,
+        "year": 2013,
+        "poster": "https://m.media-amazon.com/images/M/MV5BODk4ZjU0NDUtYjdlOS00OTljLTgwZTUtYjkyZjk1NzExZGIzXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
+        "trailer_id": "9GgxinPwAGc",
+        "note": "Flokiiiii"
     }
 }
